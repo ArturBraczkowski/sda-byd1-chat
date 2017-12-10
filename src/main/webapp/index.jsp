@@ -1,23 +1,25 @@
-<%@ page import="com.sdatwitter.service.MyTwitterService" %>
-<%@ page import="com.sdatwitter.service.MyTweet" %>
+<%@ page import="com.sda.chat.service.MyChat" %>
+<%@ page import="com.sda.chat.service.MyChatService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page import="com.google.common.base.Strings" %>
+<%@ page import="com.sda.chat.service.MyChat" %>
+<%@ page import="com.sda.chat.service.MyChatService" %>
 <%@ page contentType="text/html" pageEncoding="utf-8" %>
 
 
 <html>
 <head>
     <title>
-        SDA Tweeter
+        My Chat
     </title>
 </head>
 <body>
-<center><h1 color="blue">Twitter</h1></center>
+<center><font color="blue", size="10", face="Calibri">Chat</font></center>
 <p>
-    <a href="/publish.jsp">publish tweet</a>
+    <a href="/login.jsp">Panel Logowania</a>
 </p>
 <%!
-    MyTwitterService service = MyTwitterService.getInstance();
+    MyChatService service = MyChatService.getInstance();
 %>
 <table border="1">
     <tr>
@@ -26,12 +28,12 @@
             <th width="400px">Message</th>
     </tr>
     <%
-        for (MyTweet tweet:service.getMyTweetList()) { %>
+        for (MyChat chat:service.getMyMessageList()) { %>
     <tr>
 
-            <td><%= tweet.getAuthor() %></td>
-            <td><%= tweet.getTimestamp() %></td>
-            <td><%= tweet.getTweet() %></td>
+            <td><%= chat.getAuthor() %></td>
+            <td><%= chat.getTimestamp() %></td>
+            <td><%= chat.getMessage() %></td>
 
     </tr>
   <% } %>
